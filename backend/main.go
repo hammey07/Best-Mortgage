@@ -1,6 +1,8 @@
 package main
 
 import (
+	"best-mortgage/providers/banks"
+
 	"encoding/json"
 	"fmt"
 	"log"
@@ -8,8 +10,16 @@ import (
 )
 
 func main() {
+	// centralbank.PrintCentralBankRates()
+	bankRates, err := banks.LoadRates()
+	if err != nil {
+		fmt.Println("Error", err)
+	}
+	for _, bank := range bankRates.Banks {
+		fmt.Println(bank.BankName, bank.Fixed1To3Green)
+	}
 
-	handleRequests()
+	// handleRequests()
 
 	// var loan_amount float64 = 158000
 	// var term_years float64 = 30
@@ -17,15 +27,15 @@ func main() {
 	// result := calcMortgage(loan_amount, term_years, interest_rate)
 
 	// fmt.Printf("Monthy Repayments are %v \n", result)
-}
 
-// func calcMortgage(loan_amount float64, term_years float64, interest_rate float64) float64 {
-// 	n := term_years * 12 // number of monthly payments
-// 	r := interest_rate / 12 / 100
-// 	result := loan_amount * r * math.Pow(1+r, n) / (math.Pow(1+r, n) - 1)
-// 	result = math.Round(result*100) / 100
-// 	return result
-// }
+	// func calcMortgage(loan_amount float64, term_years float64, interest_rate float64) float64 {
+	// 	n := term_years * 12 // number of monthly payments
+	// 	r := interest_rate / 12 / 100
+	// 	result := loan_amount * r * math.Pow(1+r, n) / (math.Pow(1+r, n) - 1)
+	// 	result = math.Round(result*100) / 100
+	// 	return result
+	// }
+}
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Welcome to Best Mortgage!")
@@ -64,5 +74,6 @@ func getRates(w http.ResponseWriter, r *http.Request) {
 func handleRequests() {
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/rates", getRates)
+	// http.HandleFunc("/centralbank/latest", )
 	log.Fatal(http.ListenAndServe(":8001", nil))
 }
