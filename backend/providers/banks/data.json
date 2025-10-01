@@ -3,47 +3,87 @@
   "banks": [
     {
       "bank_name": "Permanent TSB",
-      "fixed_1_3_outstanding": 4.0,
-      "fixed_1_3_new": 3.95,
-      "fixed_1_3_green": 3.75,
-      "fixed_over_3_outstanding": 4.1,
-      "fixed_over_3_new": 4.05,
-      "fixed_over_3_green": 3.85,
-      "variable_standard": 4.15,
-      "variable_tracker": 3.25
+      "rates": {
+        "new": {
+          "fixed_1_3": 3.95,
+          "fixed_over_3": 4.05
+        },
+        "outstanding": {
+          "fixed_1_3": 4.0,
+          "fixed_over_3": 4.1
+        },
+        "green": {
+          "fixed_1_3": 3.75,
+          "fixed_over_3": 3.85
+        },
+        "variable": {
+          "standard": 4.15,
+          "tracker": 3.25
+        }
+      }
     },
     {
       "bank_name": "AIB",
-      "fixed_1_3_outstanding": 4.05,
-      "fixed_1_3_new": 4.0,
-      "fixed_1_3_green": 3.8,
-      "fixed_over_3_outstanding": 4.15,
-      "fixed_over_3_new": 4.1,
-      "fixed_over_3_green": 3.9,
-      "variable_standard": 4.2,
-      "variable_tracker": 3.3
+      "rates": {
+        "new": {
+          "fixed_1_3": 4.0,
+          "fixed_over_3": 4.1
+        },
+        "outstanding": {
+          "fixed_1_3": 4.05,
+          "fixed_over_3": 4.15
+        },
+        "green": {
+          "fixed_1_3": 3.8,
+          "fixed_over_3": 3.9
+        },
+        "variable": {
+          "standard": 4.2,
+          "tracker": 3.3
+        }
+      }
     },
     {
       "bank_name": "Bank of Ireland",
-      "fixed_1_3_outstanding": 4.1,
-      "fixed_1_3_new": 4.05,
-      "fixed_1_3_green": 3.85,
-      "fixed_over_3_outstanding": 4.2,
-      "fixed_over_3_new": 4.15,
-      "fixed_over_3_green": 3.95,
-      "variable_standard": 4.25,
-      "variable_tracker": 3.35
+      "rates": {
+        "new": {
+          "fixed_1_3": 4.05,
+          "fixed_over_3": 4.15
+        },
+        "outstanding": {
+          "fixed_1_3": 4.1,
+          "fixed_over_3": 4.2
+        },
+        "green": {
+          "fixed_1_3": 3.85,
+          "fixed_over_3": 3.95
+        },
+        "variable": {
+          "standard": 4.25,
+          "tracker": 3.35
+        }
+      }
     },
     {
       "bank_name": "KBC Bank Ireland",
-      "fixed_1_3_outstanding": 4.0,
-      "fixed_1_3_new": 3.95,
-      "fixed_1_3_green": 3.75,
-      "fixed_over_3_outstanding": 4.05,
-      "fixed_over_3_new": 4.0,
-      "fixed_over_3_green": 3.8,
-      "variable_standard": 4.1,
-      "variable_tracker": 3.2
+      "rates": {
+        "new": {
+          "fixed_1_3": 3.95,
+          "fixed_over_3": 4.0
+        },
+        "outstanding": {
+          "fixed_1_3": 4.0,
+          "fixed_over_3": 4.05
+        },
+        "green": {
+          "fixed_1_3": 3.75,
+          "fixed_over_3": 3.8
+        },
+        "variable": {
+          "standard": 4.1,
+          "tracker": 3.2
+        }
+      }
     }
   ]
 }

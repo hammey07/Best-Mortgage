@@ -10,19 +10,39 @@ import (
 )
 
 func main() {
+	user_mortgage_type := "first_time_buyer"
+	// user_mortgage_type := "remortgage"
+	// user_mortgage_type := "home-mover"
+
 	// centralbank.PrintCentralBankRates()
 	bankRates, err := banks.LoadRates()
 	if err != nil {
 		fmt.Println("Error", err)
 	}
+
+	// type Bank struct {
+	// }
+
+	// type Response struct {
+	// 	ReportingDate string `json:"reporting_date"`
+	// 	Banks         []Bank `json:"banks"`
+	// }
 	for _, bank := range bankRates.Banks {
-		fmt.Println(bank.BankName, bank.Fixed1To3Green)
+		if user_mortgage_type == "first_time_buyer" {
+			fmt.Println("You qualify for the following options")
+			fmt.Println(bank.BankName, "First Time buyer", bank.Rates.New)
+			fmt.Println(bank.BankName, "Green Mortgage", bank.Rates.Green)
+			fmt.Println(bank.BankName, "Variable Rates", bank.Rates.Variable)
+		}
 	}
+
+	// fmt.Println(bank.BankName, bank.Fixed1To3Green)
+	// }
 
 	// handleRequests()
 
 	// var loan_amount float64 = 158000
-	// var term_years float64 = 30
+	// var term_years float 64 = 30
 	// var interest_rate float64 = 4.5
 	// result := calcMortgage(loan_amount, term_years, interest_rate)
 

@@ -6,16 +6,16 @@ import (
 	"os"
 )
 
+type Rates struct {
+	New         map[string]float64 `json:"new"`
+	Outstanding map[string]float64 `json:"outstanding"`
+	Green       map[string]float64 `json:"green"`
+	Variable    map[string]float64 `json:"variable"`
+}
+
 type Bank struct {
-	BankName              string  `json:"bank_name"`
-	Fixed1To3Outstanding  float64 `json:"fixed_1_3_outstanding"`
-	Fixed1To3New          float64 `json:"fixed_1_3_new"`
-	Fixed1To3Green        float64 `json:"fixed_1_3_green"`
-	FixedOver3Outstanding float64 `json:"fixed_over_3_outstanding"`
-	FixedOver3New         float64 `json:"fixed_over_3_new"`
-	FixedOver3Green       float64 `json:"fixed_over_3_green"`
-	VariableStandard      float64 `json:"variable_standard"`
-	VariableTracker       float64 `json:"variable_tracker"`
+	BankName string `json:"bank_name"`
+	Rates    Rates  `json:"rates"`
 }
 
 type BankRates struct {
