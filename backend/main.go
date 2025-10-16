@@ -123,7 +123,7 @@ func handleRequests() {
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "Welcome to Best Mortgage. This project is currently in development. The following endpoints provides test data only.<br>")
+	fmt.Fprint(w, "Welcome to Smart Mortgage. This project is currently in development. The following endpoints provides test data only.<br>")
 	fmt.Fprint(w, `<br>Available Endpoints<br>`)
 	fmt.Fprint(w, `First Time Buyer Rates : <a href="http://localhost:8001/rates/first_time_buyer">First Time Buyer</a><br>`)
 	fmt.Fprint(w, `Remortgage Rates : <a href="http://localhost:8001/rates/remortgage">Remortgage </a><br>`)
