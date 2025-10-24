@@ -1,0 +1,83 @@
+{
+  "reporting_date": "2025-10-24",
+  "banks": [
+    {
+      "bank_name": "Permanent TSB",
+      "rates": {
+        "new": {
+          "4 Year Fixed": 3.0
+        },
+        "outstanding": {
+          "4 Year Fixed": 3.0
+        },
+        "green": {
+          "4 Year Fixed": 3.0
+        },
+        "variable": {
+          "Standard Variable": 3.0,
+          "Tracker": 3.0
+        }
+      }
+    },
+    {
+      "bank_name": "AIB",
+      "rates": {
+        "new": {
+          "Green 3 Year Fixed": 3.1,
+          "Green 5 Year Fixed": 3.3,
+          "Green 2 Year Fixed": 3.25
+        },
+        "outstanding": {
+          "Green 3 Year Fixed": 3.1,
+          "Green 5 Year Fixed": 3.3,
+          "Green 2 Year Fixed": 3.25
+        },
+        "green": {
+          "Green 3 Year Fixed": 3.1,
+          "Green 5 Year Fixed": 3.3,
+          "Green 2 Year Fixed": 3.25
+        },
+        "variable": {
+          "Standard Variable": 3.1,
+          "Tracker": 3.1
+        }
+      }
+    },
+    {
+      "bank_name": "Bank of Ireland",
+      "rates": {
+        "new": {
+          "Green 4 Year Fixed": 3.2
+        },
+        "outstanding": {
+          "Green 4 Year Fixed": 3.2
+        },
+        "green": {
+          "Green 4 Year Fixed": 3.2
+        },
+        "variable": {
+          "Standard Variable": 3.2,
+          "Tracker": 3.2
+        }
+      }
+    },
+    {
+      "bank_name": "KBC Bank Ireland",
+      "rates": {
+        "new": {
+          "4 Year Fixed": 3.95
+        },
+        "outstanding": {
+          "4 Year Fixed": 4.0
+        },
+        "green": {
+          "Green 4 Year Fixed": 3.8
+        },
+        "variable": {
+          "Standard Variable": 4.1,
+          "Tracker": 3.2
+        }
+      }
+    }
+  ]
+}

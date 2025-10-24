@@ -1,0 +1,159 @@
+$primary-blue: #3b82f6;
+$primary-blue-dark: #1d4ed8;
+$success-green: #059669;
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-700: #374151;
+$gray-900: #111827;
+$white: #ffffff;
+
+$border-radius: 12px;
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+$transition: 0.2s ease;
+
+.mortgage-rate-card {
+  background: $white;
+  border-radius: $border-radius;
+  box-shadow: $shadow-sm;
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: transform $transition, box-shadow $transition;
+  border: 1px solid $gray-200;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  .card-header {
+    background: linear-gradient(
+      135deg,
+      $primary-blue 0%,
+      $primary-blue-dark 100%
+    );
+    padding: 20px 24px;
+    color: $white;
+
+    .lender-name {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $white;
+    }
+  }
+
+  .card-content {
+    padding: 24px;
+
+    .rate-info {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $gray-200;
+
+      .rate-primary {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .rate-value {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: $success-green;
+          line-height: 1;
+        }
+
+        .rate-label {
+          font-size: 0.875rem;
+          color: $gray-500;
+          font-weight: 500;
+          margin-top: 4px;
+        }
+      }
+
+      .aprc-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .aprc-value {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: $gray-700;
+          line-height: 1;
+        }
+
+        .aprc-label {
+          font-size: 0.875rem;
+          color: $gray-500;
+          font-weight: 500;
+          margin-top: 4px;
+        }
+      }
+    }
+
+    .product-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .detail-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+
+        .detail-label {
+          font-weight: 500;
+          color: $gray-700;
+          font-size: 0.875rem;
+        }
+
+        .detail-value {
+          font-weight: 600;
+          color: $gray-900;
+          text-align: right;
+
+          &.monthly-payment {
+            color: $success-green;
+            font-size: 1.125rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 12px;
+
+    .card-header {
+      padding: 16px 20px;
+
+      .lender-name {
+        font-size: 1.25rem;
+      }
+    }
+
+    .card-content {
+      padding: 20px;
+
+      .rate-info {
+        gap: 24px;
+        margin-bottom: 20px;
+
+        .rate-primary .rate-value {
+          font-size: 2rem;
+        }
+
+        .aprc-info .aprc-value {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}

@@ -1,89 +1,134 @@
 {
-  "reporting_date": "2025-07-01",
-  "banks": [
+  "first_time_buyer_mortgages": [
     {
-      "bank_name": "Permanent TSB",
-      "rates": {
-        "new": {
-          "fixed_1_3": 3.95,
-          "fixed_over_3": 4.05
-        },
-        "outstanding": {
-          "fixed_1_3": 4.0,
-          "fixed_over_3": 4.1
-        },
-        "green": {
-          "fixed_1_3": 3.75,
-          "fixed_over_3": 3.85
-        },
-        "variable": {
-          "standard": 4.15,
-          "tracker": 3.25
-        }
-      }
+      "lender": "PTSB",
+      "product": "4 Year Fixed",
+      "rate": "3.0%",
+      "APRC": "3.96%",
+      "max_LTV": "60%",
+      "monthly_payment": "€948.42"
     },
     {
-      "bank_name": "AIB",
-      "rates": {
-        "new": {
-          "fixed_1_3": 4.0,
-          "fixed_over_3": 4.1
-        },
-        "outstanding": {
-          "fixed_1_3": 4.05,
-          "fixed_over_3": 4.15
-        },
-        "green": {
-          "fixed_1_3": 3.8,
-          "fixed_over_3": 3.9
-        },
-        "variable": {
-          "standard": 4.2,
-          "tracker": 3.3
-        }
-      }
+      "lender": "Avant Money",
+      "product": "Flex Mortgage",
+      "rate": "3.07%",
+      "APRC": "3.14%",
+      "max_LTV": "80%",
+      "monthly_payment": "€955.72"
     },
     {
-      "bank_name": "Bank of Ireland",
-      "rates": {
-        "new": {
-          "fixed_1_3": 4.05,
-          "fixed_over_3": 4.15
-        },
-        "outstanding": {
-          "fixed_1_3": 4.1,
-          "fixed_over_3": 4.2
-        },
-        "green": {
-          "fixed_1_3": 3.85,
-          "fixed_over_3": 3.95
-        },
-        "variable": {
-          "standard": 4.25,
-          "tracker": 3.35
-        }
-      }
+      "lender": "AIB",
+      "product": "Green 3 Year Fixed",
+      "rate": "3.1%",
+      "APRC": "3.78%",
+      "max_LTV": "80%",
+      "monthly_payment": "€958.86"
     },
     {
-      "bank_name": "KBC Bank Ireland",
-      "rates": {
-        "new": {
-          "fixed_1_3": 3.95,
-          "fixed_over_3": 4.0
-        },
-        "outstanding": {
-          "fixed_1_3": 4.0,
-          "fixed_over_3": 4.05
-        },
-        "green": {
-          "fixed_1_3": 3.75,
-          "fixed_over_3": 3.8
-        },
-        "variable": {
-          "standard": 4.1,
-          "tracker": 3.2
-        }
-      }
+      "lender": "EBS",
+      "product": "Green 4 Year Fixed",
+      "rate": "3.2%",
+      "APRC": "3.9%",
+      "max_LTV": "80%",
+      "monthly_payment": "€969.36"
+    },
+    {
+      "lender": "Haven",
+      "product": "Green 4 Year Fixed Rate",
+      "rate": "3.2%",
+      "APRC": "3.9%",
+      "max_LTV": "80%",
+      "monthly_payment": "€969.36"
+    },
+    {
+      "lender": "AIB",
+      "product": "Green 2 Year Fixed",
+      "rate": "3.25%",
+      "APRC": "3.89%",
+      "max_LTV": "80%",
+      "monthly_payment": "€974.63"
+    },
+    {
+      "lender": "AIB",
+      "product": "Green 5 Year Fixed",
+      "rate": "3.3%",
+      "APRC": "3.73%",
+      "max_LTV": "80%",
+      "monthly_payment": "€979.92"
+    },
+    {
+      "lender": "Avant Money",
+      "product": "One Mortgage (up to 25 Years Fixed)",
+      "rate": "3.4%",
+      "APRC": "3.47%",
+      "max_LTV": "60%",
+      "monthly_payment": "€990.55"
+    }
+  ],
+  "remortgage_mortgages": [
+    {
+      "lender": "PTSB",
+      "product": "4 Year Fixed",
+      "rate": "3.0%",
+      "APRC": "3.96%",
+      "max_LTV": "60%",
+      "monthly_payment": "€1,109.20"
+    },
+    {
+      "lender": "Avant Money",
+      "product": "Flex Mortgage",
+      "rate": "3.07%",
+      "APRC": "3.14%",
+      "max_LTV": "80%",
+      "monthly_payment": "€1,116.22"
+    },
+    {
+      "lender": "AIB",
+      "product": "Green 3 Year Fixed",
+      "rate": "3.1%",
+      "APRC": "3.78%",
+      "max_LTV": "80%",
+      "monthly_payment": "€1,119.23"
+    },
+    {
+      "lender": "EBS",
+      "product": "Green 4 Year Fixed",
+      "rate": "3.2%",
+      "APRC": "3.9%",
+      "max_LTV": "80%",
+      "monthly_payment": "€1,129.33"
+    },
+    {
+      "lender": "Haven",
+      "product": "Green 4 Year Fixed Rate",
+      "rate": "3.2%",
+      "APRC": "3.9%",
+      "max_LTV": "80%",
+      "monthly_payment": "€1,129.33"
+    },
+    {
+      "lender": "AIB",
+      "product": "Green 2 Year Fixed",
+      "rate": "3.25%",
+      "APRC": "3.89%",
+      "max_LTV": "80%",
+      "monthly_payment": "€1,134.50"
+    },
+    {
+      "lender": "AIB",
+      "product": "Green 5 Year Fixed",
+      "rate": "3.3%",
+      "APRC": "3.73%",
+      "max_LTV": "80%",
+      "monthly_payment": "€1,139.78"
+    },
+    {
+      "lender": "Avant Money",
+      "product": "One Mortgage (up to 25 Years Fixed)",
+      "rate": "3.4%",
+      "APRC": "3.47%",
+      "max_LTV": "60%",
+      "monthly_payment": "€1,150.00"
     }
   ]
 }

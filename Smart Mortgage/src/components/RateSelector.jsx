@@ -1,7 +1,7 @@
 export default function RateSelector({
   selectedRateType,
   setSelectedRateType,
-  rateDescription
+  rateDescription,
 }) {
   return (
     <div onClick={() => setSelectedRateType(selectedRateType)}>

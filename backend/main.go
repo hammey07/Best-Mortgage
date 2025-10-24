@@ -8,124 +8,76 @@ import (
 	"os"
 )
 
+func enableCORS(w http.ResponseWriter) {
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+}
+
+type Mortgage struct {
+	Lender         string `json:"lender"`
+	Product        string `json:"product"`
+	Rate           string `json:"rate"`
+	APRC           string `json:"APRC"`
+	MaxLTV         string `json:"max_LTV"`
+	MonthlyPayment string `json:"monthly_payment"`
+}
+
+type MortgageData struct {
+	FirstTimeBuyer []Mortgage `json:"first_time_buyer_mortgages"`
+	Remortgage     []Mortgage `json:"remortgage_mortgages"`
+}
+
+func loadData(filePath string) (MortgageData, error) {
+	var data MortgageData
+	file, err := os.Open(filePath)
+	if err != nil {
+		return data, err
+	}
+	defer file.Close()
+
+	err = json.NewDecoder(file).Decode(&data)
+	return data, err
+}
+
 func main() {
-	// centralbank.PrintCentralBankRates()
-	handleRequests()
-
-}
-
-type Rates struct {
-	New         map[string]float64 `json:"new"`
-	Outstanding map[string]float64 `json:"outstanding"`
-	Green       map[string]float64 `json:"green"`
-	Variable    map[string]float64 `json:"variable"`
-}
-
-type Bank struct {
-	BankName string `json:"bank_name"`
-	Rates    Rates  `json:"rates"`
-}
-
-type BankRates struct {
-	ReportDate string `json:"reporting_date"`
-	Banks      []Bank `json:"banks"`
-}
-
-type BankResponse struct {
-	BankName string                        `json:"bank_name`
-	Rates    map[string]map[string]float64 `json:"rates`
-}
-
-type Response struct {
-	ReportDate string         `json:"reporting_date`
-	Banks      []BankResponse `json:"banks"`
-}
-
-func LoadRates() (BankRates, error) {
-	data, err := os.ReadFile("banks/data.json")
+	data, err := loadData("banks/data.json") // Your JSON file path
 	if err != nil {
-		fmt.Println("Error reading data", err)
-		return BankRates{}, err
+		log.Fatalf("Failed to load data: %v", err)
 	}
 
-	var rates BankRates
-	err = json.Unmarshal(data, &rates)
-	if err != nil {
-		fmt.Println("Error parsing json", err)
-		return BankRates{}, err
-
-	}
-	return rates, nil
-}
-
-func BuildResponse(bankRates BankRates, userType string) Response {
-	resp := Response{
-		ReportDate: bankRates.ReportDate,
-		Banks:      []BankResponse{},
-	}
-
-	for _, bank := range bankRates.Banks {
-		b := BankResponse{
-			BankName: bank.BankName,
-			Rates:    map[string]map[string]float64{},
+	http.HandleFunc("/rates/first-time-buyer", func(w http.ResponseWriter, r *http.Request) {
+		enableCORS(w)
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
 		}
-
-		switch userType {
-		case "first_time_buyer":
-			b.Rates["new"] = bank.Rates.New
-			b.Rates["green"] = bank.Rates.Green
-			b.Rates["variable"] = bank.Rates.Variable
-		case "remortgage":
-			b.Rates["outstanding"] = bank.Rates.Outstanding
-			b.Rates["variable"] = bank.Rates.Variable
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(data.FirstTimeBuyer); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
-
-		resp.Banks = append(resp.Banks, b)
-	}
-	return resp
-}
-
-func handleRequests() {
-	bankRates, err := LoadRates()
-	if err != nil {
-		fmt.Println("Error", err)
-		return
-	}
-	http.HandleFunc("/", homePage)
-	http.HandleFunc("/rates/first_time_buyer", func(w http.ResponseWriter, r *http.Request) {
-		response := BuildResponse(bankRates, "first_time_buyer")
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(response)
 	})
-	http.HandleFunc("/rates/remortgage", func(w http.ResponseWriter, r *http.Request) {
-		response := BuildResponse(bankRates, "remortgage")
+
+	http.HandleFunc("/rates/switcher", func(w http.ResponseWriter, r *http.Request) {
+		enableCORS(w)
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(response)
+		if err := json.NewEncoder(w).Encode(data.Remortgage); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 	})
-	// http.HandleFunc("/centralbank/latest", )
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html")
+		fmt.Fprint(w, "Welcome to Smart Mortgage. This project is currently in development. The following endpoints provides test data only.<br>")
+		fmt.Fprint(w, `<br>Available Endpoints<br>`)
+		fmt.Fprint(w, `First Time Buyer Rates : <a href="http://localhost:8001/rates/first-time-buyer">First Time Buyer</a><br>`)
+		fmt.Fprint(w, `Remortgage Rates : <a href="http://localhost:8001/rates/switcher">Remortgage </a><br>`)
+
+	})
+
+	log.Println("Server running at http://localhost:8001")
 	log.Fatal(http.ListenAndServe(":8001", nil))
-}
-
-// var loan_amount float64 = 158000
-// var term_years float 64 = 30
-// var interest_rate float64 = 4.5
-// result := calcMortgage(loan_amount, term_years, interest_rate)
-
-// fmt.Printf("Monthy Repayments are %v \n", result)
-
-// func calcMortgage(loan_amount float64, term_years float64, interest_rate float64) float64 {
-// 	n := term_years * 12 // number of monthly payments
-// 	r := interest_rate / 12 / 100
-// 	result := loan_amount * r * math.Pow(1+r, n) / (math.Pow(1+r, n) - 1)
-// 	result = math.Round(result*100) / 100
-// 	return result
-// }
-
-func homePage(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "Welcome to Smart Mortgage. This project is currently in development. The following endpoints provides test data only.<br>")
-	fmt.Fprint(w, `<br>Available Endpoints<br>`)
-	fmt.Fprint(w, `First Time Buyer Rates : <a href="http://localhost:8001/rates/first_time_buyer">First Time Buyer</a><br>`)
-	fmt.Fprint(w, `Remortgage Rates : <a href="http://localhost:8001/rates/remortgage">Remortgage </a><br>`)
-
 }

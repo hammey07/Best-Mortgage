@@ -1,19 +1,16 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
-import Home
+import Home from "./pages/Home";
 import FirstTimeBuyer from "./pages/FirstTimeBuyer";
 
 function App() {
-  const [selectedRateType, setSelectedRateType] = useState("");
-
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/first-time-buyer" element={<FirstTimeBuyer />} /> */}
+        <Route path="/first-time-buyer" element={<FirstTimeBuyer />} />
       </Routes>
     </BrowserRouter>
   );
