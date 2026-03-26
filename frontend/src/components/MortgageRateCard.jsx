@@ -27,6 +27,7 @@ function MortgageRateCard({ item }) {
             <span className="detail-label">Max LTV:</span>
             <span className="detail-value">{item.max_LTV}</span>
           </div>
+          w
           <div className="detail-item">
             <span className="detail-label">Monthly Payment:</span>
             <span className="detail-value monthly-payment">
