@@ -1,6 +1,6 @@
 # Best Mortgage
 
-Simple full-stack mortgage calculator.
+Simple full-stack mortgage application.
 
 ## Features
 Frontend uses API endpoints from the backend to render mortgage products.
