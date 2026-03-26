@@ -28,6 +28,6 @@ npm install
 npm run dev
 
 ### Usage
-Visit <your-localhost-url>/first-time-buyer to view mortgage products fetched from backend API endpoints.
+Visit (your-localhost-url)/first-time-buyer to view mortgage products fetched from backend API endpoints.
 
 API endpoints can also be tested directly by running the Go backend and visiting localhost in your browser.
